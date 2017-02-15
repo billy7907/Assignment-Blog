@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+
+  </head>
+
+
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed"
+          data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+          aria-expanded="false">
+          <span class='glyphicon glyphicon-menu-hamburger'></span>
+
+
+          </button>
+
+          <a class='navbar-brand' href="/">
+            <span class='glyphicon glyphicon-fire'></span>
+          </a>
+
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <form class="navbar-form navbar-left">
+            <div class="form-group">
+              <div class='visible-xs'>
+                <input type="text" class="form-control" placeholder="Search">
+              </div>
+            </div>
+          </form>
+          <ul class= "nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <hr>
+          </ul>
+
+
+
+
+
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/sign-up">Sign Up</a></li>
+            <li><a href="/login">Login</a></li>
+          </ul>
+
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <div class='visible-lg'>
+                <input type="text" class="form-control" placeholder="Search">
+              </div>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </nav>
+
+
+  <body>
+    <%= yield %>
+  </body>
+
+  <div class='col-xs-12' id='footer'>
+    <i class="fa fa-envelope-o" aria-hidden="true"></i>
+    <i class="fa fa-facebook-square" aria-hidden="true"></i>
+    <i class="fa fa-instagram" aria-hidden="true"></i>
+    <i class="fa fa-medium" aria-hidden="true"></i>
+    <i class="fa fa-twitter-square" aria-hidden="true"></i>
+  </div>
+
+</html>

@@ -1,0 +1,71 @@
+<div class='container-fluid'>
+  <div class='row'>
+
+
+
+    <div class='col-lg-9'>
+      <div class='visible-lg'>
+        <img src="https://cdn.thinglink.me/api/image/727110550026190849/1240/10/scaletowidth">
+        <i class="glyphicon glyphicon-heart"></i>
+        <i><%= Faker::Number.between(1,1000) %></i>
+        <i class="glyphicon glyphicon-bookmark pull-right"></i>
+        <h3><a href="/show"><%= Faker::Lorem.words(2).join(' ').capitalize %></a></h3>
+        <p>Commodi cumque ab. Nam voluptatem aspernatur reiciendis. Deserunt quae voluptatem nobis molestias. Quo voluptas omnis tempora dolorem at sapiente sunt. Consequatur fugiat non nesciunt repudiandae porro et maxime. Est porro et nemo perferendis magnam dignissimos omnis.</p>
+        <p><%= Faker::Name.name  %></p>
+        <p><%= Faker::Date.between(600.days.ago, Date.today) %></p>
+        <hr>
+      </div>
+    </div>
+
+    <div class='col-lg-3'>
+      <div class='visible-lg'>
+        <h3>Most Liked</h3>
+        <p>X gon' give it to ya
+Fuck waiting for you to get it on your own, X gon' deliver to ya
+Knock knock, open up the door, it's real
+With the non-stop, pop pop of stainless steel
+Go hard, getting busy wit it
+But I got such a good heart
+That I'll make a motherfucker wonder if he did it
+Damn right, and I'll do it again, cause I am right so I gots to win
+Break bread with the enemy, but no matter how many cats I break bread with I'll break who you sendin' me
+You motherfuckers never wanted nothing
+But your life saved, bitch, and that's on a light day
+I'm getting down, down like a nigga said "Freeze!"
+But won't be the one ending up on his knees
+Bitch please, if the only thing you cats did
+Was came out to play, stay out my way, motherfucker!</p>
+      </div>
+    </div>
+
+
+
+    <% for i in (1..9) %>
+    <div class='col-lg-4'>
+        <img src="https://cdn.thinglink.me/api/image/727110550026190849/1240/10/scaletowidth">
+        <i class="glyphicon glyphicon-heart"></i>
+        <i><%= Faker::Number.between(1,1000) %></i>
+        <i class="glyphicon glyphicon-bookmark pull-right"></i>
+        <h3><a href="/show"><%= Faker::Lorem.words(2).join(' ').capitalize %></a></h3>
+        <p>Commodi cumque ab. Nam voluptatem aspernatur reiciendis. Deserunt quae voluptatem nobis molestias. Quo voluptas omnis tempora dolorem at sapiente sunt. Consequatur fugiat non nesciunt repudiandae porro et maxime. Est porro et nemo perferendis magnam dignissimos omnis.</p>
+        <p><%= Faker::Name.name  %></p>
+        <p><%= Faker::Date.between(600.days.ago, Date.today) %></p>
+        <hr>
+    </div>
+    <% end %>
+
+
+
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- <img src="https://cdn.thinglink.me/api/image/727110550026190849/1240/10/scaletowidth"> -->

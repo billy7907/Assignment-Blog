@@ -1,0 +1,56 @@
+// Place all the styles related to the post controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.col-lg-4{
+  height: 100%
+}
+
+.visible-lg > img{
+  width: 100%;
+  height: auto;
+}
+
+#pic{
+  margin-bottom: 20px;
+}
+
+
+
+img{
+  height: auto;
+  width: 100%;
+  background-size: cover;
+  object-fit: fill;
+}
+
+.comment{
+  text-align: center;
+  font-size: 20px
+}
+
+.glyphicon-bookmark {
+  margin-top:2px;
+  font-size: 20px
+}
+
+.glyphicon-heart{
+  margin-right: 10px;
+  font-size: 20px
+}
+
+#like{
+  padding: 0;
+}
+
+#post{
+  padding:0px
+}
+
+#footer{
+  font-size: 40px;
+  text-align: center;
+}
+
+.fa-envelope-o, .fa-facebook-square, .fa-instagram, .fa-medium, .fa-twitter-square{
+  padding: 0 8px
+}
