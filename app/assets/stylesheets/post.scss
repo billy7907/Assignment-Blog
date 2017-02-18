@@ -12,9 +12,13 @@
 
 #pic{
   margin-bottom: 20px;
+
 }
 
-
+.post {
+  height: 200px;
+  overflow: scroll;
+}
 
 img{
   height: auto;
@@ -53,4 +57,16 @@ img{
 
 .fa-envelope-o, .fa-facebook-square, .fa-instagram, .fa-medium, .fa-twitter-square{
   padding: 0 8px
+}
+
+.color {
+  color:black !important;
+}
+
+.label {
+  font-size: 20px;
+}
+
+.body{
+  font-size: 30px;
 }

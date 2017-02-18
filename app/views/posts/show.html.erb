@@ -7,9 +7,9 @@
         <i class="glyphicon glyphicon-heart"></i>
         <i><%= Faker::Number.between(1,1000) %></i>
         <i class="glyphicon glyphicon-bookmark pull-right"></i>
-        <img id='pic' src="https://cdn.thinglink.me/api/image/727110550026190849/1240/10/scaletowidth">
+        <img id='pic' src="https://static.pexels.com/photos/1029/landscape-mountains-nature-clouds.jpg">
         <p><%= Faker::Lorem.paragraph(30) %></p>
-        <span>Post category: Doggo</span>
+        <span>Category: <%= @post.category.name %></span>
         <span class='pull-right'><%= Faker::Date.between(600.days.ago, Date.today) %></span>
         <hr>
       </div>
@@ -27,7 +27,7 @@
         <i class="glyphicon glyphicon-heart"></i>
         <i><%= Faker::Number.between(1,1000) %></i>
         <i class="glyphicon glyphicon-bookmark pull-right"></i>
-        <p>Post category: Doggo</p>
+        <p>Category: <%= @post.category.name %></p>
         <hr>
       </div>
     </div>
@@ -36,27 +36,37 @@
 
     <div class='col-xs-6 col-xs-offset-3'>
       <div class='visible-lg'>
-        <div class='col-xs-3'>
-          <img src="https://s3.amazonaws.com/cms-uploads.adoptapet.com/e/4/d/5.png" style='width:160px; height:180px'>
+        <div class='row'>
+          <div class='col-xs-3'>
+            <img src="https://s3.amazonaws.com/cms-uploads.adoptapet.com/e/4/d/5.png" style='width:160px; height:180px'>
+          </div>
+
+          <div class='col-xs-9'>
+            <br>
+            <p><%= Faker::Name.name %></p>
+            <p><%= Faker::Lorem.paragraph(7) %></p>
+          </div>
         </div>
 
-        <div class='col-xs-9'>
-          <br>
-          <p><%= Faker::Name.name %></p>
-          <p><%= Faker::Lorem.paragraph(7) %></p>
-        </div>
-        <div class='col-xs-12'>
-          <h4>Leave a comment</h4>
-          <form action="" class="form-group">
-            <textarea class="form-control" rows="3"></textarea>
-            <br>
-            <div class="input-group">
-              <span class="input-group-addon">Full Name</span>
-              <input id="msg" type="text" class="form-control" name="msg">
+        <div class="row">
+          <div class='col-xs-12'>
+            <div>
+              <%= form_for [@post, @comment] do |c| %>
+                <div>
+                  <h4>Leave a comment</h4>
+                  <%= c.text_area :body, cols: "90", rows: "8" %>
+                  <br>
+                </div>
+                <div>
+                  <%= c.submit 'Submit' %>
+                </div>
+              <% end %>
             </div>
-          </form>
-          <hr>
+            <hr>
+          </div>
+
         </div>
+
       </div>
     </div>
 
@@ -64,37 +74,46 @@
 
     <div class='col-xs-12'>
       <div class='hidden-lg'>
-        <div class='col-xs-3'>
-          <img src="https://s3.amazonaws.com/cms-uploads.adoptapet.com/e/4/d/5.png">
+        <div class="row">
+          <div class='col-xs-3'>
+            <img src="https://s3.amazonaws.com/cms-uploads.adoptapet.com/e/4/d/5.png">
+          </div>
+
+          <div class='col-xs-9'>
+            <p><%= Faker::Name.name %></p>
+            <p><%= Faker::Lorem.paragraph(2) %></p>
+          </div>
         </div>
 
-        <div class='col-xs-9'>
-          <p><%= Faker::Name.name %></p>
-          <p><%= Faker::Lorem.paragraph(2) %></p>
-        </div>
-        <h4>Leave a comment</h4>
-        <form action="" class="form-group">
-          <textarea class="form-control" rows="3"></textarea>
-          <br>
-          <div class="input-group">
-            <span class="input-group-addon">Full Name</span>
-            <input id="msg" type="text" class="form-control" name="msg">
+
+        <div class="row">
+          <div class="col-xs-12">
+            <%= form_for [@post, @comment], method: :post do |c| %>
+              <div>
+                <h4>Leave a comment</h4>
+                <%= c.text_area :body, cols: "50", rows: "8" %>
+                <br>
+              </div>
+              <div>
+                <%= c.submit 'Submit' %>
+              </div>
+            <% end %>
           </div>
-        </form>
+        </div>
         <hr>
       </div>
     </div>
 
 
-
+    <% @post.comments.order(created_at: :desc).each do |c| %>
     <div class='col-xs-6 col-xs-offset-3'>
-      <% for i in (1..5) %>
+
       <div class='visible-lg'>
         <div class='col-xs-3'>
           <img src="https://img.clipartfest.com/6fb758d2f32b5bd391f9bda65c5ab08c_small-animal-cottonwood-small-dog-group-clipart-png_537-800.png" style="width:120px; height:150px">
         </div>
         <div class='col-xs-9'>
-          <p><%= Faker::Lorem.paragraph(5) %></p>
+          <p><%= c.body %></p>
         </div>
 
         <div class="col-xs-12">
@@ -104,18 +123,18 @@
           <br><br><br>
         </div>
       </div>
-      <% end %>
     </div>
+    <% end %>
 
 
-    <% for i in (1..5) %>
+    <% @post.comments.order(created_at: :desc).each do |c| %>
     <div class='col-xs-12'>
       <div class='hidden-lg'>
       <div class='col-xs-3'>
         <img src="https://img.clipartfest.com/6fb758d2f32b5bd391f9bda65c5ab08c_small-animal-cottonwood-small-dog-group-clipart-png_537-800.png">
       </div>
       <div class='col-xs-9'>
-        <p><%= Faker::Lorem.paragraph(5) %></p>
+        <p><%= Faker::Lorem.paragraph(2) %></p>
       </div>
 
       <span><%= Faker::Name.name %></span>

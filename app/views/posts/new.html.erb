@@ -1,0 +1,32 @@
+<div class='container-fluid' style="text-align: center">
+
+
+  <h1>Create a new post</h1>
+
+  <p><%= @post.errors.full_messages.join(', ') %></p>
+
+  <%= form_for @post do |f| %>
+    <div>
+      <%= f.label :title, class:'label'%>
+      <br>
+      <%= f.text_field :title, class:'body'%>
+    </div>
+    <div>
+      <%= f.label :body, class:'label' %>
+      <br>
+      <%= f.text_area :body, class:'body' %>
+    </div>
+    <div>
+    <%= f.label :category, class:'label' %>
+    <br>
+    <div class='color'>
+    <%= f.select :category_id do %>
+      <%= options_from_collection_for_select(Category.all, :id, :name) %>
+    </div>
+    <% end %>
+    </div>
+    <br>
+    <%= f.submit 'Submit' %>
+  <% end %>
+  <br><br><br>
+</div>

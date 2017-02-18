@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
-  get '/' => 'post#index'
-  get '/show' => 'post#show'
+  # get '/' => 'posts#index'
+  # get '/show' => 'posts#show'
+  # get '/new' => 'posts#new'
+  # post '/' => 'posts#create'
+  root 'posts#index'
+
+  resources :posts do
+    resources :comments
+  end
+
+
+
 end
