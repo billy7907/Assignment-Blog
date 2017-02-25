@@ -9,6 +9,7 @@
 
   </head>
 
+  <body>
 
     <nav class="navbar navbar-default">
       <div class="container-fluid">
@@ -47,8 +48,13 @@
 
 
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="/sign-up">Sign Up</a></li>
-            <li><a href="/login">Login</a></li>
+            <% if user_signed_in? %>
+              <li><%= link_to current_user.full_name, edit_user_path(current_user) %></li>
+              <li><%= link_to "Logout", sessions_path, method: :delete,data: {confirm: "are you sure you want to log out?"}%></li>
+            <% else %>
+              <li><%= link_to "Login", new_session_path %></li>
+              <li><%= link_to "Sign Up", new_user_path %></li>
+            <% end %>
           </ul>
 
           <form class="navbar-form navbar-right">
@@ -63,10 +69,14 @@
       </div>
     </nav>
 
+    <% if flash[:notice] %>
+    <%= flash[:notice] %>
+    <% elsif flash[:alert] %>
+    <%= flash[:alert] %>
+    <% end %>
 
-  <body>
+
     <%= yield %>
-  </body>
 
   <div class='col-xs-12' id='footer'>
     <i class="fa fa-envelope-o" aria-hidden="true"></i>
@@ -76,4 +86,5 @@
     <i class="fa fa-twitter-square" aria-hidden="true"></i>
   </div>
 
+</body>
 </html>

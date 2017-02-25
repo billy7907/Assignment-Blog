@@ -1,26 +1,36 @@
 <div class='container-fluid'>
   <div class='row'>
 
+
     <div class='col-lg-12'>
       <div class='visible-lg'>
-        <h2><%= Faker::Lorem.words(2).join(' ').capitalize %></h2>
+        <h2><%= @post.title.capitalize %></h2>
         <i class="glyphicon glyphicon-heart"></i>
         <i><%= Faker::Number.between(1,1000) %></i>
         <i class="glyphicon glyphicon-bookmark pull-right"></i>
         <img id='pic' src="https://static.pexels.com/photos/1029/landscape-mountains-nature-clouds.jpg">
-        <p><%= Faker::Lorem.paragraph(30) %></p>
+        <p><%= @post.body %></p>
         <span>Category: <%= @post.category.name %></span>
         <span class='pull-right'><%= Faker::Date.between(600.days.ago, Date.today) %></span>
+        <br><br>
+        <div class='pull-right' style='font-size: 20px'>
+          <%# if can?(:manage, @post) %>
+            <%= link_to 'Edit', edit_post_path(@post) %> |
+            <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%# end %>
+        </div>
+        <br>
         <hr>
       </div>
     </div>
 
 
+
     <div class='col-xs-12'>
       <div class='hidden-lg'>
-        <h2><%= Faker::Lorem.words(2).join(' ').capitalize %></h2>
+        <h2><%= @post.title.capitalize %></h2>
         <img src="https://cdn.thinglink.me/api/image/727110550026190849/1240/10/scaletowidth">
-        <p><%= Faker::Lorem.paragraph(30) %></p>
+        <p><%= @post.body %></p>
         <div class='col-xs-12'>
           <p class='pull-right'><%= Faker::Date.between(600.days.ago, Date.today) %></p>
         </div>
@@ -28,6 +38,13 @@
         <i><%= Faker::Number.between(1,1000) %></i>
         <i class="glyphicon glyphicon-bookmark pull-right"></i>
         <p>Category: <%= @post.category.name %></p>
+        <div class='pull-right' style='font-size: 20px'>
+          <%# if can?(:manage, @post) %>
+            <%= link_to 'Edit', edit_post_path(@post) %> |
+            <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%# end %>
+        </div>
+        <br>
         <hr>
       </div>
     </div>
@@ -116,11 +133,17 @@
           <p><%= c.body %></p>
         </div>
 
-        <div class="col-xs-12">
+        <div class="col-xs-12" style="padding-right: 0">
           <br>
           <span><%= Faker::Name.name %></span>
           <span class="pull-right"><%= Faker::Date.between(600.days.ago, Date.today) %></span>
-          <br><br><br>
+          <br>
+        </div>
+
+        <div class='pull-right' style='font-size: 15px'>
+          <%# if can?(:manage, @post) %>
+            <%= link_to 'Delete', post_comment_path(c), method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%# end %>
         </div>
       </div>
     </div>

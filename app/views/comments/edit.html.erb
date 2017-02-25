@@ -1,0 +1,10 @@
+<%= form_for @comment, url: post_comment_path do |c| %>
+  <div>
+    <h4>Leave a comment</h4>
+    <%= c.text_area :body, cols: "50", rows: "8" %>
+    <br>
+  </div>
+  <div>
+    <%= c.submit 'Submit' %>
+  </div>
+<% end %>
