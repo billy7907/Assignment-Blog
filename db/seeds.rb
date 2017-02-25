@@ -13,10 +13,10 @@ User.create(first_name: 'Billy', last_name: 'Hung', email: 'billy7907@gmail.com'
 end
 
 
-Category.create(name: 'Personal')
-Category.create(name: 'Business')
-Category.create(name: 'Journal')
-Category.create(name: 'Politics')
+# Category.create(name: 'Personal')
+# Category.create(name: 'Business')
+# Category.create(name: 'Journal')
+# Category.create(name: 'Politics')
 
 
 10.times do
