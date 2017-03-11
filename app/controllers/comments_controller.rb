@@ -16,6 +16,7 @@ class CommentsController < ApplicationController
     # redirect_to root_path, alert: "access defined" unless can? :create, @comment
 
     if @comment.save
+      CommentsMailer.notify_post_owner(@comment).deliver_later(wait_until: 1.day.from_now)
       redirect_to post_path(@post)
 
     else
@@ -24,16 +25,10 @@ class CommentsController < ApplicationController
     end
   end
 
-  def edit
-    # @post = Post.find params[:id]
-    # render json: params
-    @comment = Comment.find params[:post_id]
-  end
 
   def destroy
-    @comment = Comment.find params[:post_id]
+    @comment = Comment.find params[:id]
     @user = User.find @comment.user_id
-
 
     if current_user.id == @comment.user_id || current_user.is_admin == true
       @comment.destroy

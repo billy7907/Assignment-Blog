@@ -34,12 +34,16 @@ img{
 
 .glyphicon-bookmark {
   margin-top:2px;
-  font-size: 20px
+  font-size: 25px
 }
 
-.glyphicon-heart{
+.glyphicon-thumbs-up, .glyphicon-thumbs-down{
   margin-right: 10px;
-  font-size: 20px
+  font-size: 25px;
+}
+
+a{
+  color: white;
 }
 
 #like{

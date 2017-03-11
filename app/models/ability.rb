@@ -27,9 +27,15 @@ class Ability
         comment.user == user
       end
 
-    #   if user.admin?
-    #     can :manage, :all
-    #   else
+      cannot :like, Post do |post|
+        user == post.user
+      end
+
+      can :like, Post do |post|
+        user != post.user
+      end
+
+
     #     can :read, :all
     #   end
     #

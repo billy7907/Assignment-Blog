@@ -5,8 +5,20 @@
     <div class='col-lg-12'>
       <div class='visible-lg'>
         <h2><%= @post.title.capitalize %></h2>
-        <i class="glyphicon glyphicon-heart"></i>
-        <i><%= Faker::Number.between(1,1000) %></i>
+        <% if user_signed_in? && can?(:like, @post) %>
+          <% if @post.liked_by?(current_user) %>
+            <%= link_to like_path(@post.like_for(current_user)), method: :delete do%>
+              <i class="glyphicon glyphicon-thumbs-down"></i>
+            <% end %>
+          <% else %>
+            <%= link_to post_likes_path(@post), method: :post do%>
+              <i class="glyphicon glyphicon-thumbs-up"></i>
+            <% end %>
+          <% end %>
+        <% else %>
+          <i class="glyphicon glyphicon-thumbs-up"></i>
+        <% end %>
+        <%= pluralize @post.likes.count, '' %>
         <i class="glyphicon glyphicon-bookmark pull-right"></i>
         <img id='pic' src="https://static.pexels.com/photos/1029/landscape-mountains-nature-clouds.jpg">
         <p><%= @post.body %></p>
@@ -34,8 +46,18 @@
         <div class='col-xs-12'>
           <p class='pull-right'><%= Faker::Date.between(600.days.ago, Date.today) %></p>
         </div>
-        <i class="glyphicon glyphicon-heart"></i>
-        <i><%= Faker::Number.between(1,1000) %></i>
+        <% if user_signed_in? && can?(:like, @post) %>
+          <% if @post.liked_by?(current_user) %>
+            <%= link_to like_path(@post.like_for(current_user)), method: :delete do%>
+              <i class="glyphicon glyphicon-thumbs-down"></i>
+            <% end %>
+          <% else %>
+            <%= link_to post_likes_path(@post), method: :post do%>
+              <i class="glyphicon glyphicon-thumbs-up"></i>
+            <% end %>
+          <% end %>
+        <% end %>
+        <%= pluralize @post.likes.count, '' %>
         <i class="glyphicon glyphicon-bookmark pull-right"></i>
         <p>Category: <%= @post.category.name %></p>
         <div class='pull-right' style='font-size: 20px'>
@@ -60,8 +82,8 @@
 
           <div class='col-xs-9'>
             <br>
-            <p><%= Faker::Name.name %></p>
-            <p><%= Faker::Lorem.paragraph(7) %></p>
+            <p><%= @post.user.full_name %></p>
+            <p><%= Faker::Lorem.paragraph(8) %></p>
           </div>
         </div>
 
@@ -97,8 +119,8 @@
           </div>
 
           <div class='col-xs-9'>
-            <p><%= Faker::Name.name %></p>
-            <p><%= Faker::Lorem.paragraph(2) %></p>
+            <p><%= @post.user.full_name %></p>
+            <p><%= Faker::Lorem.paragraph(3) %></p>
           </div>
         </div>
 
@@ -135,14 +157,14 @@
 
         <div class="col-xs-12" style="padding-right: 0">
           <br>
-          <span><%= Faker::Name.name %></span>
+          <span><%= c.user.full_name %></span>
           <span class="pull-right"><%= Faker::Date.between(600.days.ago, Date.today) %></span>
           <br>
         </div>
 
         <div class='pull-right' style='font-size: 15px'>
           <%# if can?(:manage, @post) %>
-            <%= link_to 'Delete', post_comment_path(c), method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'Delete', comment_path(c), method: :delete, data: { confirm: 'Are you sure?' } %>
           <%# end %>
         </div>
       </div>
@@ -157,12 +179,21 @@
         <img src="https://img.clipartfest.com/6fb758d2f32b5bd391f9bda65c5ab08c_small-animal-cottonwood-small-dog-group-clipart-png_537-800.png">
       </div>
       <div class='col-xs-9'>
-        <p><%= Faker::Lorem.paragraph(2) %></p>
+        <p><%= c.body %></p>
       </div>
 
-      <span><%= Faker::Name.name %></span>
-      <span class="pull-right"><%= Faker::Date.between(600.days.ago, Date.today) %></span>
-      <br><br><br>
+      <div class="col-xs-12" style="padding-right: 0">
+        <br>
+        <span><%= c.user.full_name %></span>
+        <span class="pull-right"><%= Faker::Date.between(600.days.ago, Date.today) %></span>
+        <br>
+      </div>
+
+      <div class='pull-right' style='font-size: 15px'>
+        <%# if can?(:manage, @post) %>
+          <%= link_to 'Delete', comment_path(c), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <%# end %>
+      </div>
       </div>
 
     </div>
