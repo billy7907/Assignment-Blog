@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :users, except: [:destroy] do
     # patch :edit_password
+    resources :likes, only: :index
     delete :destroy, on: :collection
   end
 

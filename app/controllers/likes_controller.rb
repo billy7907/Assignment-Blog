@@ -4,6 +4,11 @@ class LikesController < ApplicationController
   before_action :find_like, only: [:destroy]
   before_action :find_post, only: [:create]
 
+  def index
+    @user = User.find(params[:user_id])
+    @posts = @user.liked_posts
+  end
+
   def create
 
     if cannot? :like, @post
