@@ -1,14 +1,16 @@
-<h1>Sign Up</h1>
+<div class='text-center' style='margin-bottom:50px'>
 
-<% if @user.errors.any? %>
+  <h1>Sign Up</h1>
+
+  <% if @user.errors.any? %>
   <ul>
     <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-      <% end %>
+    <li><%= msg %></li>
+    <% end %>
   </ul>
-<% end %>
+  <% end %>
 
-<%= form_for @user do |f| %>
+  <%= form_for @user do |f| %>
   <div>
     <%= f.label :first_name %>
     <br>
@@ -39,5 +41,7 @@
     <%= f.password_field :password_confirmation %>
   </div>
   <br>
-  <%= f.submit %>
-<% end %>
+  <%= f.submit class:'btn btn-primary' %>
+  <% end %>
+
+</div>
