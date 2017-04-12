@@ -1,6 +1,8 @@
-<h1>Edit Your Personal Information</h1>
+<div class='text-center'>
 
-<%= form_for @user do |f|  %>
+  <h1>Edit Your Personal Information</h1>
+
+  <%= form_for @user do |f|  %>
   <div>
     <%= f.label :first_name %>
     <br>
@@ -18,16 +20,17 @@
     <br>
     <%= f.email_field :email %>
   </div>
+  <br>
 
   <div>
-    <%= submit_tag "Update" %>
+    <%= submit_tag "Update", class:'btn btn-primary' %>
   </div>
-<% end %>
-<br>
+  <% end %>
+  <br>
 
-<h1>Update Password</h1>
+  <h1>Update Password</h1>
 
-<%= form_for @user, :url => edit_password_path(@user) do |f| %>
+  <%= form_for @user, :url => edit_password_path(@user) do |f| %>
   <div>
     <%= f.label :current_password %>
     <br>
@@ -45,9 +48,12 @@
     <br>
     <%= f.password_field :new_password_confirmation %>
   </div>
+  <br>
 
   <div>
-    <%= submit_tag "Update" %>
+    <%= submit_tag "Update", class:'btn btn-primary' %>
   </div>
 
-<% end %>
+  <% end %>
+
+</div>
