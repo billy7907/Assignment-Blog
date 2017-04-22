@@ -25,10 +25,8 @@
         <span class='pull-right'><%= Faker::Date.between(600.days.ago, Date.today) %></span>
         <br><br>
         <div class='pull-right' style='font-size: 20px'>
-          <%# if can?(:manage, @post) %>
             <%= link_to 'Edit', edit_post_path(@post) %> |
             <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
-          <%# end %>
         </div>
         <br>
         <hr>
@@ -58,10 +56,8 @@
         <i class="glyphicon glyphicon-bookmark pull-right"></i>
         <p>Category: <%= @post.category.name %></p>
         <div class='pull-right' style='font-size: 20px'>
-          <%# if can?(:manage, @post) %>
             <%= link_to 'Edit', edit_post_path(@post) %> |
             <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
-          <%# end %>
         </div>
         <br>
         <hr>
@@ -156,9 +152,7 @@
         </div>
 
         <div class='pull-right' style='font-size: 15px'>
-          <%# if can?(:manage, @post) %>
             <%= link_to 'Delete', comment_path(c), method: :delete, data: { confirm: 'Are you sure?' } %>
-          <%# end %>
         </div>
       </div>
     </div>
@@ -183,9 +177,7 @@
       </div>
 
       <div class='pull-right' style='font-size: 15px'>
-        <%# if can?(:manage, @post) %>
           <%= link_to 'Delete', comment_path(c), method: :delete, data: { confirm: 'Are you sure?' } %>
-        <%# end %>
       </div>
       </div>
 
@@ -202,16 +194,3 @@
   </div>
 
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-<!--  -->
