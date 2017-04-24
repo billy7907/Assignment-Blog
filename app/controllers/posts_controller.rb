@@ -10,22 +10,15 @@ class PostsController < ApplicationController
 
 
   def create
-    # redirect_to root_path, alert: "access defined" unless can? :manage, @post
     @post = Post.new(post_params)
     @post.user = current_user
     @category = Category.find(@post.category_id)
     @post.category = @category
     if @post.save
-      # render :show
-      # redirect_to question_path({id: @question.id})
-      # redirect_to question_path({id: @question})
       flash[:notice] = "Post created successfully"
       redirect_to posts_path(@post)
-
     else
       flash.now[:alert] = "Please fix errors below"
-      # this will force rail to render : app/views/questions/new.html.erb
-      # instead of the default: app/views/questions/create.html.erb
       render :new
     end
   end
@@ -49,7 +42,6 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find params[:id]
-    # if current_user.id == @post.user_id
     @post.destroy
     redirect_to root_path, notice: 'Post deleted!'
 
@@ -59,7 +51,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    # this feature is called strong parameter (introduced in Rails 4+)
     post_params = params.require(:post).permit([:title, :body, :category_id])
   end
 
