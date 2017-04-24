@@ -13,12 +13,9 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @post = Post.find params[:post_id]
     @comment.post = @post
-    # redirect_to root_path, alert: "access defined" unless can? :create, @comment
-
     if @comment.save
       CommentsMailer.notify_post_owner(@comment).deliver_later(wait_until: 1.day.from_now)
       redirect_to post_path(@post)
-
     else
       flash.now[:alert] = "please fix errors"
       render 'posts/show'
