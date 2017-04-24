@@ -3,14 +3,11 @@
   <head>
     <title>Blog</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
-
   </head>
 
   <body>
-
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -48,9 +45,6 @@
           </ul>
 
 
-
-
-
           <ul class="nav navbar-nav navbar-right">
             <% if user_signed_in? %>
               <li><%= link_to current_user.full_name, edit_user_path(current_user) %></li>
@@ -79,7 +73,6 @@
     <%= flash[:alert] %>
     <% end %>
 
-
     <%= yield %>
 
   <div class='col-xs-12' id='footer'>
@@ -89,6 +82,5 @@
     <i class="fa fa-medium" aria-hidden="true"></i>
     <i class="fa fa-twitter-square" aria-hidden="true"></i>
   </div>
-
 </body>
 </html>
