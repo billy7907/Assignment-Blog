@@ -14,5 +14,4 @@ class Post < ApplicationRecord
     likes.find_by(user: user)
   end
 
-
 end
