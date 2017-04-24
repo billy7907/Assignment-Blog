@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
 
-
   before_action(:load_user, except: [:new, :create] )
-
 
   def new
     @user = User.new
@@ -19,7 +17,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    # @user = User.find_by_id params[:id]
   end
 
   def update

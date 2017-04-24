@@ -10,7 +10,6 @@ class LikesController < ApplicationController
   end
 
   def create
-
     if cannot? :like, @post
       redirect_to post_path(@post)
       return
@@ -33,7 +32,6 @@ class LikesController < ApplicationController
 
     @like.destroy
     redirect_to post_path(@like.post)
-
   end
 
   private
