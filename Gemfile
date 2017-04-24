@@ -54,7 +54,6 @@ group :development, :test do
   gem 'hirb'
   gem 'faker', '~> 1.6', '>= 1.6.3'
   gem 'rails-erd'
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 end
 
