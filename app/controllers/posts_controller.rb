@@ -8,7 +8,6 @@ class PostsController < ApplicationController
     @categories = Category.all
   end
 
-
   def create
     @post = Post.new(post_params)
     @post.user = current_user
@@ -27,7 +26,6 @@ class PostsController < ApplicationController
     @posts = Post.order(created_at: :desc)
     @post = Post.find params[:id]
     @comment = Comment.new
-
   end
 
   def index
@@ -44,7 +42,6 @@ class PostsController < ApplicationController
     @post = Post.find params[:id]
     @post.destroy
     redirect_to root_path, notice: 'Post deleted!'
-
   end
 
 
