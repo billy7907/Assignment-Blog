@@ -2,7 +2,6 @@ class CommentsController < ApplicationController
 
   before_action :authenticate_user!, only: [:create, :new, :destroy]
 
-
   def new
     @comment = Comment.new
   end
@@ -33,7 +32,6 @@ class CommentsController < ApplicationController
     else
       redirect_to post_path(@comment.post_id), alert: "access denied" unless can? :destroy, @comment
     end
-
   end
 
 end
