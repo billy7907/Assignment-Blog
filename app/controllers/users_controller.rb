@@ -27,9 +27,7 @@ class UsersController < ApplicationController
     end
   end
 
-
   def edit_password
-
     if @user && @user.authenticate(params[:user][:current_password])
       if params[:user][:current_password] != params[:user][:new_password]
         if params[:user][:new_password] == params[:user][:new_password_confirmation]
