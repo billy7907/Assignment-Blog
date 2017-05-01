@@ -24,7 +24,6 @@
 
     <% @post.each do |p| %>
     <div class='col-lg-4'>
-        <!-- <img src="https://static.pexels.com/photos/33109/fall-autumn-red-season.jpg"> -->
         <%= link_to image_tag('https://static.pexels.com/photos/33109/fall-autumn-red-season.jpg'), post_path(p) %>
         <i class="glyphicon glyphicon-heart"></i>
         <i><%= Faker::Number.between(1,1000) %></i>
