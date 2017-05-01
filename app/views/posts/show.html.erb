@@ -19,7 +19,7 @@
         <% end %>
         <%= pluralize @post.likes.count, '' %>
         <i class="glyphicon glyphicon-bookmark pull-right"></i>
-        <img id='pic' src="https://images.pexels.com/photos/26750/pexels-photo-26750.jpg?w=1260&h=750&auto=compress&cs=tinysrgb">
+        <img id='pic' src="https://static.pexels.com/photos/33109/fall-autumn-red-season.jpg">
         <p><%= @post.body %></p>
         <span>Category: <%= @post.category.name %></span>
         <span class='pull-right'><%= Faker::Date.between(600.days.ago, Date.today) %></span>
