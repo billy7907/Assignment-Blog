@@ -1,6 +1,5 @@
 <div class='container-fluid'>
   <div class='row'>
-
     <div class='col-lg-9'>
       <div class='visible-lg'>
         <img src="https://static.pexels.com/photos/1029/landscape-mountains-nature-clouds.jpg">
@@ -27,14 +26,12 @@
         <%= link_to image_tag('https://static.pexels.com/photos/33109/fall-autumn-red-season.jpg'), post_path(p) %>
         <i class="glyphicon glyphicon-heart"></i>
         <i><%= Faker::Number.between(1,1000) %></i>
-
         <i class="glyphicon glyphicon-bookmark pull-right"></i>
         <div class="post">
           <h3><%= link_to p.title, post_path(p) %></h3>
           <p><%= p.body %></p>
           <p><%= Faker::Name.name  %></p>
           <p><%= Faker::Date.between(600.days.ago, Date.today) %></p>
-
         </div>
         <hr>
     </div>
